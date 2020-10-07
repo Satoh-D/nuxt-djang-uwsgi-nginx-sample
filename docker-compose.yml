@@ -17,6 +17,7 @@ services:
             # - "./docker/mysql/conf.d:/etc/mysql/conf.d"
     web:
         build: ./docker/django/
+        tty: true
         container_name: django
         volumes: 
             - ./django:/code
@@ -27,6 +28,7 @@ services:
     nuxt:
         build: ./docker/nuxt
         container_name: nuxt
+        tty: true
         volumes: 
             - ./nuxt:/code
         ports: 

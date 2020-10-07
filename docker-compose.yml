@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+    db:
+        image: mysql:5.7
+        restart: always
+        container_name: mysql
+        environment: 
+            MYSQL_ROOT_PASSWORD: django
+            MYSQL_USER: django
+            MYSQL_DATABASE: django
+            MYSQL_PASSWORD: django
+        ports:
+            - "3306:3306"
+        # volumes: 
+            # - "./docker/mysql/:/var/lib/mysql"
+            # - "./docker/mysql/conf.d:/etc/mysql/conf.d"
+    web:
+        build: ./docker/django/
+        container_name: django
+        volumes: 
+            - ./django:/code
+        ports: 
+            - "8000:8000"
+        depends_on: 
+            - db
+    nuxt:
+        build: ./docker/nuxt
+        container_name: nuxt
+        volumes: 
+            - ./nuxt:/code
+        ports: 
+            - "3000:3000"
+
+        
+
+
+    

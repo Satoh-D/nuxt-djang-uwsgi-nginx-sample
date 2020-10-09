@@ -38,11 +38,6 @@ export default class IndexComponent extends Vue {
   dat: any = []
 
   mounted() {
-    /*
-    const url = "/api/get_person"
-    const response = this.$axios.get(url)
-    this.dat = response.data
-    */
     this.$axios.get('/api/get_person/')
     .then((res) => {
       this.dat = res.data
@@ -52,19 +47,6 @@ export default class IndexComponent extends Vue {
     })
   }
 }
-
-/*
-data() {
-    return {
-      dat: []
-    }
-  },
-  async mounted(){
-    const url = "/api/get_person/"
-    const response = await this.$axios.get(url)
-    this.dat = response.data
-  }
-*/
 </script>
 
 <style>
